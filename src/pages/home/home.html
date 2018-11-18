@@ -1,14 +1,33 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Today
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <!-- add diary, click to go to detail page-->
+  <ion-item>
+    <button ion-button full (click)="addDiary()">Add Diary</button>
+  </ion-item>
+
+  <!-- some icons may be useful to mood select options -->
+  <!-- <button><ion-icon name="happy"></ion-icon></button>
+  <button><ion-icon name="logo-octocat"></ion-icon></button>
+  <button><ion-icon name="sad"></ion-icon></button> -->
+
+  <ion-list>
+    <ion-item *ngFor="let diary of diaries" (click)="editDiary(diary.key)">
+      <ion-avatar item-start>
+        <img [src]="diary.image"/>
+      </ion-avatar>
+      <p>{{ diary.text }}</p>
+      <p>{{ diary.timestamp | date:'short'}}</p>
+      <button ion-button clear icon-only item-end (click)="deleteDiary(diary.key)">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
