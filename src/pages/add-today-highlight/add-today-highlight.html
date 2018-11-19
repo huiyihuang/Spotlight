@@ -1,0 +1,29 @@
+<ion-header>
+<!-- 
+  <ion-navbar>
+    <ion-title>Add Today's Highlights!</ion-title>
+  </ion-navbar> -->
+
+</ion-header>
+
+
+<ion-content padding>
+  <h1>Think back on your day, tell us about your three highlights of today!</h1>
+  <ion-list no-lines>
+    <ion-item *ngFor="let diary of diaries" (click)="editDiary(diary.key)">
+      <ion-thumbnail item-end *ngIf="diary.hasimage">
+        <img [src]="diary.image"/>
+      </ion-thumbnail>
+      <p>{{ diary.text }}</p>
+      <button ion-button clear icon-only item-start (click)="deleteDiary(diary.key)">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item>
+      <button ion-button block (click)="goToCreatePage()"><ion-icon icon-only item-start name="add"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+  <ion-item no-lines *ngIf="goalComplete">
+      <button ion-button block (click)="complete()">DONE</button>
+  </ion-item>
+</ion-content>

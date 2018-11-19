@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Edit Diary Entry</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+    <!-- content: happy things today -->
+    <ion-list no-lines>
+      <ion-item color="primary">
+        <ion-label>Diary Content:</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Today I ..." [(ngModel)]="diary.text"></ion-textarea>
+      </ion-item>
+      <ion-item></ion-item>
+    <!-- picture -->
+      <!-- <ion-item color="primary">
+        <ion-label>Picture:</ion-label>
+      </ion-item> -->
+      <ion-item (click)="addPic()">
+        <img [src]="diary.image"/>
+      </ion-item>
+      <ion-item>
+        <button ion-button item-end icon-start (click)="addPic()">
+          <ion-icon name="image"></ion-icon>
+          Add Photo
+        </button>
+      </ion-item>
+    </ion-list>
+  
+  <!-- back,save -->
+    <ion-list>
+      <ion-item>
+        <button ion-button item-start (click)="goBack()">Cancel </button>
+        <button ion-button item-end (click)="saveDiary()">Save</button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  

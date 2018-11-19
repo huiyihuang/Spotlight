@@ -8,12 +8,16 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { DetailPage } from '../pages/detail/detail';
+import { AddTodayHighlightPage } from '../pages/add-today-highlight/add-today-highlight';
+import { CreateHighlightPage } from '../pages/create-highlight/create-highlight';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    DetailPage
+    DetailPage,
+    AddTodayHighlightPage,
+    CreateHighlightPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,9 @@ import { DetailPage } from '../pages/detail/detail';
   entryComponents: [
     MyApp,
     HomePage,
-    DetailPage
+    DetailPage,
+    AddTodayHighlightPage,
+    CreateHighlightPage
   ],
   providers: [
     StatusBar,

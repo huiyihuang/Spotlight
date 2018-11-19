@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { DataServiceProvider } from '../../providers/data-service/data-service';
 import { Diary, Mood } from '../../models/note';
 import { DetailPage } from '../detail/detail';
+import { AddTodayHighlightPage } from '../add-today-highlight/add-today-highlight';
 
 @Component({
   selector: 'page-home',
@@ -31,6 +32,10 @@ export class HomePage {
 
   private deleteDiary(diaryKey:string) {
     this.dataService.removeDiary(diaryKey);
+  }
+
+  private goToHighlightList() {
+    this.navCtrl.push(AddTodayHighlightPage);
   }
 
 }
