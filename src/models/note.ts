@@ -1,14 +1,19 @@
-//this is the model for the happy things(dairies) users type in
+//this is the model for the highlights users log
 export class Diary {
-    key:string;
+    key: string;
     text: string;//content
-    timestamp = null;
+    year: null;
+    month: null;
+    day: null;
+    hasimage: boolean = false;
     image: string;
 }
 
 //this is the model for their every day mood
 export class Mood {
-    key:string;
+    key: string;
     type: string;//happy, sad, medium
-    timestamp = null;
+    year: null;
+    month: null;
+    day: null;
 }

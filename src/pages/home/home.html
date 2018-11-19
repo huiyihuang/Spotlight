@@ -7,17 +7,20 @@
 </ion-header>
 
 <ion-content padding>
-  <!-- add diary, click to go to detail page-->
-  <ion-item>
-    <button ion-button full (click)="addDiary()">Add Diary</button>
+  <!-- click to go to today page-->
+  <ion-item no-lines>
+    <button ion-button full (click)="goToHighlightList()">Add Today's Highlights</button>
   </ion-item>
+  <br>
 
   <!-- some icons may be useful to mood select options -->
   <!-- <button><ion-icon name="happy"></ion-icon></button>
   <button><ion-icon name="logo-octocat"></ion-icon></button>
   <button><ion-icon name="sad"></ion-icon></button> -->
 
+  <!-- all entries for references (to be deleted later) -->
   <ion-list>
+    <ion-item>All entries in the database for references:</ion-item>
     <ion-item *ngFor="let diary of diaries" (click)="editDiary(diary.key)">
       <ion-avatar item-start>
         <img [src]="diary.image"/>

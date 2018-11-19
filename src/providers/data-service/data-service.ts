@@ -38,8 +38,11 @@ export class DataServiceProvider {
         let eachDiary = {
           key: childSnapshot.key,
           text: childSnapshot.val().text,
-          timestamp : childSnapshot.val().timestamp,
+          year : childSnapshot.val().year,
+          month : childSnapshot.val().month,
+          day : childSnapshot.val().day,
           image: childSnapshot.val().image,
+          hasimage: childSnapshot.val().hasimage,
         };
         this.diaries.push(eachDiary);
       });
@@ -53,7 +56,9 @@ export class DataServiceProvider {
         let eachMood = {
           key: childSnapshot.key,
           type: childSnapshot.val().type,
-          timestamp : childSnapshot.val().timestamp,
+          year : childSnapshot.val().year,
+          month : childSnapshot.val().month,
+          day : childSnapshot.val().day,
         };
         this.moods.push(eachMood);
       });
@@ -85,6 +90,21 @@ export class DataServiceProvider {
     return undefined;
   }
 
+  public getDiaryByDate(): Diary[] {
+    let diaries: Diary[] = [];
+    //get today's date
+    let today = new Date();
+    let year = today.getFullYear().toString();
+    let month = (today.getMonth() + 1).toString();
+    let day = today.getDate().toString();
+    for (let e of this.diaries) {
+      if (e.year === year && e.month) {
+        diaries.push(JSON.parse(JSON.stringify(e)));
+      }
+    }
+    return diaries;
+  }
+
   private findDiaryByKey(key: string): Diary {
     for (let e of this.diaries) {
       if (e.key === key) {
@@ -111,14 +131,18 @@ export class DataServiceProvider {
 
   // Add Diary
   public addDiary(diary:Diary) {
-    diary.timestamp = Date.now();
+    //get today's date
+    let today = new Date();
     //save
     let listRef = this.db.ref('/Diaries');
     let prefRef = listRef.push();
     let dataRecord = {
       text: diary.text,
-      timestamp : diary.timestamp,
-      image: diary.image
+      year: today.getFullYear().toString(),
+      month: (today.getMonth() + 1).toString(),
+      day: today.getDate().toString(),
+      image: diary.image,
+      hasimage: false
     };
     prefRef.set(dataRecord);
     this.notifySubscribers();
@@ -129,14 +153,12 @@ export class DataServiceProvider {
   public updateDiary(key: string, newDiary: Diary): void {
     let diaryToUpdate: Diary = this.findDiaryByKey(key); 
     diaryToUpdate.text = newDiary.text;
-    diaryToUpdate.timestamp = Date.now();
     diaryToUpdate.image = newDiary.image;
     //save
     let parentRef = this.db.ref('/Diaries');
     let childRef = parentRef.child(key);
     childRef.set({
       text:  diaryToUpdate.text,
-      timestamp: diaryToUpdate.timestamp,
       image: diaryToUpdate.image
     });
     this.notifySubscribers();
