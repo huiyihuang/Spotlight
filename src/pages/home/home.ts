@@ -4,6 +4,7 @@ import { DataServiceProvider } from '../../providers/data-service/data-service';
 import { Diary, Mood } from '../../models/note';
 import { DetailPage } from '../detail/detail';
 import { AddTodayHighlightPage } from '../add-today-highlight/add-today-highlight';
+import { CreateHighlightPage } from '../create-highlight/create-highlight';
 
 @Component({
   selector: 'page-home',
@@ -22,12 +23,8 @@ export class HomePage {
       this.diaries = dataService.getEntries();
     }
 
-  private addDiary() {
-    this.navCtrl.push(DetailPage);
-  }
-
   private editDiary(diaryKey:string) {
-    this.navCtrl.push(DetailPage, {"diaryKey": diaryKey});
+    this.navCtrl.push(CreateHighlightPage, {"diaryKey": diaryKey});
   }
 
   private deleteDiary(diaryKey:string) {

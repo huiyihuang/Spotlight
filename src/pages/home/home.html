@@ -26,7 +26,6 @@
         <img [src]="diary.image"/>
       </ion-avatar>
       <p>{{ diary.text }}</p>
-      <p>{{ diary.timestamp | date:'short'}}</p>
       <button ion-button clear icon-only item-end (click)="deleteDiary(diary.key)">
         <ion-icon name="close-circle"></ion-icon>
       </button>

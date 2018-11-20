@@ -10,13 +10,11 @@
         <ion-label>Diary Content:</ion-label>
       </ion-item>
       <ion-item>
-        <ion-textarea placeholder="Today I ..." [(ngModel)]="diary.text"></ion-textarea>
+        <ion-textarea rows="6" placeholder="Today I ..." [(ngModel)]="diary.text"></ion-textarea>
       </ion-item>
       <ion-item></ion-item>
+
     <!-- picture -->
-      <!-- <ion-item color="primary">
-        <ion-label>Picture:</ion-label>
-      </ion-item> -->
       <ion-item (click)="addPic()">
         <img [src]="diary.image"/>
       </ion-item>
