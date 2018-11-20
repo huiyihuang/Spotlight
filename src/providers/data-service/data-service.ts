@@ -3,6 +3,7 @@ import { Diary, Mood } from '../../models/note';
 import { Observer } from 'rxjs/Observer';
 import { Observable } from 'rxjs/Observable';
 import firebase from 'firebase';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 // firebase key
 const firebaseConfig = {
@@ -22,7 +23,7 @@ export class DataServiceProvider {
   private serviceObserver: Observer<Diary[]>;
   private clientObservable: Observable<Diary[]>;
 
-  constructor() {
+  constructor(private camera: Camera) {
     let foo;
     //observable
     this.clientObservable = Observable.create(observerThatWasCreated => {
@@ -142,7 +143,7 @@ export class DataServiceProvider {
       month: (today.getMonth() + 1).toString(),
       day: today.getDate().toString(),
       image: diary.image,
-      hasimage: false
+      hasimage: diary.hasimage
     };
     prefRef.set(dataRecord);
     this.notifySubscribers();
@@ -154,13 +155,38 @@ export class DataServiceProvider {
     let diaryToUpdate: Diary = this.findDiaryByKey(key); 
     diaryToUpdate.text = newDiary.text;
     diaryToUpdate.image = newDiary.image;
+    diaryToUpdate.hasimage = newDiary.hasimage;
     //save
     let parentRef = this.db.ref('/Diaries');
     let childRef = parentRef.child(key);
     childRef.set({
-      text:  diaryToUpdate.text,
-      image: diaryToUpdate.image
+      text: diaryToUpdate.text,
+      image: diaryToUpdate.image,
+      year: diaryToUpdate.year,
+      month: diaryToUpdate.month,
+      day: diaryToUpdate.day,
+      hasimage: diaryToUpdate.hasimage
     });
     this.notifySubscribers();
+  }
+
+  // Add Photo from Album
+  public addPhotoFromAlbum(diary: Diary) {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum: false
+    }
+    let previous = diary.image;
+    this.camera.getPicture(options).then((imageData) => {
+      if (imageData) {
+        diary.image = 'data:image/jpeg;base64,' + imageData;   
+      } else {
+        diary.image = previous;
+      }
+     }, (err) => {
+        diary.image = previous;
+     });
   }
 }

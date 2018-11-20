@@ -13,19 +13,20 @@ How to use git to collaborate:
     c. git pull
 
 Pages now:
-  1. Home, showing diaries users have saved
-  2. Detail, allow users to create and update diaries
+  1. Home: the access to AddTodayHighlight page & a list including all entries in the database as references for the convenience of development
+  2. AddTodayHighlight: add button to add a new highlight, highlight list to show added highlights before complete
+  3. CreateHighlight: textarea for adding text to a highlight, add photo button to insert a photo to this highlight from native photo album
   
 Data Model:
-  1. Diary: events users saved(key,text,timestamp,image)
-  2. Mood: everyday mood(key,type,timestamp)
+  1. Diary: highlights users saved(key, text, year, month, day, image, hasimage)
+  2. Mood: everyday mood(key, type, year, month, day)
   
 Functions in Service:
   1. observable
   2. get diary by key
   3. get diaries
-  4. add diary
-  5. delete diary
-  6. update diary 
-
-  
+  4. get diary by date
+  5. add diary
+  6. delete diary
+  7. update diary
+  8. add photo from album

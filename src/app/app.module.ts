@@ -10,6 +10,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 import { DetailPage } from '../pages/detail/detail';
 import { AddTodayHighlightPage } from '../pages/add-today-highlight/add-today-highlight';
 import { CreateHighlightPage } from '../pages/create-highlight/create-highlight';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CreateHighlightPage } from '../pages/create-highlight/create-highlight'
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataServiceProvider
+    DataServiceProvider,
+    Camera
   ]
 })
 export class AppModule {}
