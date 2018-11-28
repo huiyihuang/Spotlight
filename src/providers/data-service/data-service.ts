@@ -22,6 +22,7 @@ export class DataServiceProvider {
   private moods: Mood[] = [];
   private serviceObserver: Observer<Diary[]>;
   private clientObservable: Observable<Diary[]>;
+  public loadData: boolean = false;
 
   constructor(private camera: Camera) {
     let foo;
@@ -51,7 +52,7 @@ export class DataServiceProvider {
     });
     // get mood data from firebase
     let moodRef = this.db.ref('/Moods');
-    dataRef.on('value', snapshot => {
+    moodRef.on('value', snapshot => {
       this.moods = []; 
       snapshot.forEach(childSnapshot => {
         let eachMood = {
@@ -63,8 +64,12 @@ export class DataServiceProvider {
         };
         this.moods.push(eachMood);
       });
+
       this.notifySubscribers();
+      console.log("this.loadData before flag:",this.loadData);
+      this.loadData=true;
     });
+
 
   }
 
@@ -79,6 +84,12 @@ export class DataServiceProvider {
   public getEntries():Diary[] {
     let entriesClone = JSON.parse(JSON.stringify(this.diaries));
     return entriesClone;
+  }
+
+
+  public getMoods():Mood[] {
+    let moodsClone = JSON.parse(JSON.stringify(this.moods));
+    return moodsClone;
   }
 
   public getDiaryByKey(key: string): Diary {
@@ -106,8 +117,29 @@ export class DataServiceProvider {
     return diaries;
   }
 
+// Keep this as get by "key" so that 
+// it can be used not only for getting today's mood but also for searching
+  public getMoodByKey(key: string): Mood {
+    for (let e of this.moods) {
+      if (e.key === key) {
+        let clone = JSON.parse(JSON.stringify(e));
+        return clone;
+      }
+    }
+    return undefined;
+  }
+
   private findDiaryByKey(key: string): Diary {
     for (let e of this.diaries) {
+      if (e.key === key) {
+         return e;
+      }
+    }
+    return undefined;
+  }
+
+  private findMoodByKey(key: string): Mood {
+    for (let e of this.moods) {
       if (e.key === key) {
          return e;
       }
@@ -150,6 +182,25 @@ export class DataServiceProvider {
     console.log("Added an entry, the list is now: ", this.diaries);
   }
 
+  // Add Mood
+    public addMood(mood:Mood) {
+
+    let today= new Date();
+    mood.key = today.getFullYear()+"-"+(1+today.getMonth())+"-"+today.getDate();
+    //save
+    let listRef = this.db.ref('/Moods');
+    let prefRef = listRef.child(mood.key);
+    let dataRecord = {
+      type: mood.type,
+      year: today.getFullYear().toString(),
+      month: (today.getMonth() + 1).toString(),
+      day: today.getDate().toString(),
+    };
+    prefRef.set(dataRecord);
+    this.notifySubscribers();
+    console.log("Added a mood, the list is now: ", this.moods);
+  }
+
   // Update Diary
   public updateDiary(key: string, newDiary: Diary): void {
     let diaryToUpdate: Diary = this.findDiaryByKey(key); 
@@ -166,6 +217,22 @@ export class DataServiceProvider {
       month: diaryToUpdate.month,
       day: diaryToUpdate.day,
       hasimage: diaryToUpdate.hasimage
+    });
+    this.notifySubscribers();
+  }
+
+  // update mood
+  public updateMood(key: string, newMood: Mood): void {
+    let moodToUpdate: Mood = this.findMoodByKey(key); 
+    moodToUpdate.type = newMood.type;
+    //save
+    let parentRef = this.db.ref('/Moods');
+    let childRef = parentRef.child(key);
+    childRef.set({
+      type: moodToUpdate.type, 
+      year: moodToUpdate.year,
+      month: moodToUpdate.month,
+      day: moodToUpdate.day,
     });
     this.notifySubscribers();
   }

@@ -12,8 +12,10 @@ export class Diary {
 //this is the model for their every day mood
 export class Mood {
     key: string;
-    type: string;//happy, sad, medium
+    type: string;//smile,meh,sad
     year: null;
     month: null;
     day: null;
 }
+
+

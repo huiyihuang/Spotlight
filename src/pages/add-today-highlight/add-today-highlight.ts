@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DataServiceProvider } from '../../providers/data-service/data-service';
 import { Diary, Mood } from '../../models/note';
 import { CreateHighlightPage } from '../create-highlight/create-highlight';
+import { MoodPage } from '../../pages/mood/mood';
 
 @IonicPage()
 @Component({
@@ -52,6 +53,11 @@ export class AddTodayHighlightPage {
   private goToCreatePage() {
     this.navCtrl.push(CreateHighlightPage);
   }
+
+
+  private goToMoodPage() {
+    this.navCtrl.push(MoodPage);
+  } 
 
   private complete() {
 
