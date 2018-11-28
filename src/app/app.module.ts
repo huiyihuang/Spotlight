@@ -10,6 +10,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 import { DetailPage } from '../pages/detail/detail';
 import { AddTodayHighlightPage } from '../pages/add-today-highlight/add-today-highlight';
 import { CreateHighlightPage } from '../pages/create-highlight/create-highlight';
+import {MoodPage } from '../pages/mood/mood';
 import { Camera } from '@ionic-native/camera';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { Camera } from '@ionic-native/camera';
     HomePage,
     DetailPage,
     AddTodayHighlightPage,
-    CreateHighlightPage
+    CreateHighlightPage,
+    MoodPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { Camera } from '@ionic-native/camera';
     HomePage,
     DetailPage,
     AddTodayHighlightPage,
-    CreateHighlightPage
+    CreateHighlightPage,
+    MoodPage
   ],
   providers: [
     StatusBar,

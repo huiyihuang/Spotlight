@@ -5,6 +5,7 @@ import { Diary, Mood } from '../../models/note';
 import { DetailPage } from '../detail/detail';
 import { AddTodayHighlightPage } from '../add-today-highlight/add-today-highlight';
 import { CreateHighlightPage } from '../create-highlight/create-highlight';
+import { MoodPage } from '../../pages/mood/mood';
 
 @Component({
   selector: 'page-home',
@@ -34,5 +35,9 @@ export class HomePage {
   private goToHighlightList() {
     this.navCtrl.push(AddTodayHighlightPage);
   }
+
+  private goToMoodPage() {
+    this.navCtrl.push(MoodPage);
+  }  
 
 }
