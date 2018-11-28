@@ -110,7 +110,7 @@ export class DataServiceProvider {
     let month = (today.getMonth() + 1).toString();
     let day = today.getDate().toString();
     for (let e of this.diaries) {
-      if (e.year === year && e.month) {
+      if (e.year === year && e.month ===month && e.day===day) {
         diaries.push(JSON.parse(JSON.stringify(e)));
       }
     }
