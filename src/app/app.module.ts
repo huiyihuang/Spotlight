@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { DetailPage } from '../pages/detail/detail';
 import { TabsPage } from '../pages/tabs/tabs';
+import { MoodPage } from '../pages/mood/mood';
 import { AddTodayHighlightPage } from '../pages/add-today-highlight/add-today-highlight';
 import { CreateHighlightPage } from '../pages/create-highlight/create-highlight';
 import { Camera } from '@ionic-native/camera';
@@ -20,6 +21,7 @@ import { Camera } from '@ionic-native/camera';
     DetailPage,
     AddTodayHighlightPage,
     CreateHighlightPage,
+    MoodPage,
     TabsPage
   ],
   imports: [
@@ -33,6 +35,7 @@ import { Camera } from '@ionic-native/camera';
     DetailPage,
     AddTodayHighlightPage,
     CreateHighlightPage,
+    MoodPage,
     TabsPage
   ],
   providers: [
