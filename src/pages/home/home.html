@@ -7,6 +7,10 @@
 </ion-header>
 
 <ion-content padding>
+  <!-- click to start quick log -->
+  <ion-item no-lines>
+    <button ion-button full (click)="presentActionSheet()">Quick Log Highlight Moments</button>
+  </ion-item>
   <!-- click to go to today page-->
   <ion-item no-lines>
     <button ion-button full (click)="goToMoodPage()">Add Today's Highlights</button>
