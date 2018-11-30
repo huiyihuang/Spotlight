@@ -4,6 +4,7 @@ import { Observer } from 'rxjs/Observer';
 import { Observable } from 'rxjs/Observable';
 import firebase from 'firebase';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { AlertController } from 'ionic-angular';
 
 // firebase key
 const firebaseConfig = {
@@ -24,7 +25,7 @@ export class DataServiceProvider {
   private clientObservable: Observable<Diary[]>;
   public loadData: boolean = false;
 
-  constructor(private camera: Camera) {
+  constructor(private camera: Camera, private alertCtrl: AlertController) {
     let foo;
     //observable
     this.clientObservable = Observable.create(observerThatWasCreated => {
@@ -182,6 +183,20 @@ export class DataServiceProvider {
     console.log("Added an entry, the list is now: ", this.diaries);
   }
 
+  // Create Quick Log
+  public createQuickLog(camera) {
+    let newDiary = new Diary();
+    newDiary.key = "";
+    newDiary.text = "Go ahead and complete this highlight!";
+    newDiary.image = "";
+    newDiary.hasimage = true;
+    if (camera) {
+      this.quciLogWithCam(newDiary);
+    } else {
+      this.quickLogFromAlbum(newDiary);
+    };
+  }
+
   // Add Mood
     public addMood(mood:Mood) {
 
@@ -255,5 +270,59 @@ export class DataServiceProvider {
      }, (err) => {
         diary.image = previous;
      });
+  }
+
+  // Quick Log Photo from Album
+  private quickLogFromAlbum(diary: Diary) {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum: false
+    }
+    let previous = diary.image;
+    this.camera.getPicture(options).then((imageData) => {
+      if (imageData) {
+        diary.image = 'data:image/jpeg;base64,' + imageData;
+        this.addDiary(diary);
+        this.presentConfirmation();   
+      } else {
+        diary.image = previous;
+      }
+     }, (err) => {
+        diary.image = previous;
+     });
+  }
+
+  // Quick Log Photo with Camera
+  private quciLogWithCam(diary: Diary) {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    let previous = diary.image;
+    this.camera.getPicture(options).then((imageData) => {
+      if (imageData) {
+        diary.image = 'data:image/jpeg;base64,' + imageData;
+        this.addDiary(diary);
+        this.presentConfirmation();   
+      } else {
+        diary.image = previous;
+      }
+     }, (err) => {
+        diary.image = previous;
+     });
+  }
+
+  // Present Alert for Quick Log Confirmation
+  private presentConfirmation() {
+    let alert = this.alertCtrl.create({
+      title: 'Photo is successfully logged!',
+      subTitle: 'Remember to come back and complete it later today ;)',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }

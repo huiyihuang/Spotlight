@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ActionSheetController } from 'ionic-angular';
 import { DataServiceProvider } from '../../providers/data-service/data-service';
 import { Diary, Mood } from '../../models/note';
 import { DetailPage } from '../detail/detail';
@@ -17,7 +17,8 @@ export class HomePage {
   private moods: Mood[] = [];
 
   constructor(public navCtrl: NavController,
-    private dataService:DataServiceProvider) {
+    private dataService: DataServiceProvider, 
+    private actionSheetCtrl: ActionSheetController) {
       this.dataService.getObservable().subscribe(update => {
         this.diaries = dataService.getEntries();
       });
@@ -38,6 +39,39 @@ export class HomePage {
 
   private goToMoodPage() {
     this.navCtrl.push(MoodPage);
-  }  
+  }
+
+  private presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Add a photo to mark your highlight!',
+      buttons: [
+        {
+          text: 'From Camera',
+          handler: () => {
+            console.log('<From Camera> clicked');
+            let camera = true;
+            this.dataService.createQuickLog(camera);
+          }
+        },
+        {
+          text: 'From Album',
+          handler: () => {
+            console.log('<From Album> clicked');
+            let camera = false;
+            this.dataService.createQuickLog(camera);
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('<Cancel> clicked');
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+ }
 
 }
