@@ -1,5 +1,9 @@
 page-mood {
 
+
+ion-content{
+	text-align:center;
+}
 .moodicon {
 	width:100px;
 	height:100px;
@@ -8,6 +12,21 @@ page-mood {
 .moodbutton {
 	width:100px;
 	height:100px;
+}
+
+span{
+	color:lightgrey;
+}
+
+#highlight{
+	font-weight:bold;
+	font-size:16px;
+	color:#797979;
+}
+
+.status{
+	text-align:center;
+	font-size:14px;
 }
 
 }

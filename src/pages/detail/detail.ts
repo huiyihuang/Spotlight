@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Diary } from '../../models/note';
 import { HomePage } from '../home/home';
+import { JournalPage } from '../journal/journal';
 import { DataServiceProvider } from '../../providers/data-service/data-service';
 
 @IonicPage()
@@ -28,18 +29,9 @@ export class DetailPage {
     }
   }
 
-  private saveDiary() {
-    if (this.diary.key == "") { 
-      this.dataService.addDiary(this.diary);
-    } else {
-      this.dataService.updateDiary(this.diary.key, this.diary);
-    }
-    this.navCtrl.pop();
-    console.log(this.diary);
-  }
 
-  private backToHome() {
-    this.navCtrl.push(HomePage);
+  private backToJournal() {
+    this.navCtrl.push(JournalPage);
   }
 
 }

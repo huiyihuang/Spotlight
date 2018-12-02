@@ -22,18 +22,5 @@
   <button><ion-icon name="logo-octocat"></ion-icon></button>
   <button><ion-icon name="sad"></ion-icon></button> -->
 
-  <!-- all entries for references (to be deleted later) -->
-  <ion-list>
-    <ion-item>All entries in the database for references:</ion-item>
-    <ion-item *ngFor="let diary of diaries" (click)="editDiary(diary.key)">
-      <ion-avatar item-start>
-        <img [src]="diary.image"/>
-      </ion-avatar>
-      <p>{{ diary.text }}</p>
-      <button ion-button clear icon-only item-end (click)="deleteDiary(diary.key)">
-        <ion-icon name="close-circle"></ion-icon>
-      </button>
-    </ion-item>
-  </ion-list>
 
 </ion-content>
