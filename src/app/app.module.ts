@@ -12,6 +12,9 @@ import { AddTodayHighlightPage } from '../pages/add-today-highlight/add-today-hi
 import { CreateHighlightPage } from '../pages/create-highlight/create-highlight';
 import { MoodPage } from '../pages/mood/mood';
 import { TabsPage } from '../pages/tabs/tabs';
+import { CompletePage } from '../pages/complete/complete';
+
+import { JournalPage } from '../pages/journal/journal';
 import { Camera } from '@ionic-native/camera';
 
 @NgModule({
@@ -22,7 +25,9 @@ import { Camera } from '@ionic-native/camera';
     AddTodayHighlightPage,
     CreateHighlightPage,
     MoodPage,
-    TabsPage
+    TabsPage,
+    JournalPage,
+    CompletePage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,9 @@ import { Camera } from '@ionic-native/camera';
     AddTodayHighlightPage,
     CreateHighlightPage,
     MoodPage,
-    TabsPage
+    TabsPage,
+    JournalPage,
+    CompletePage
   ],
   providers: [
     StatusBar,

@@ -1,17 +1,24 @@
-<ion-header>
+<!-- <ion-header>
       <ion-navbar>
         <ion-title>
           Today's Mood
         </ion-title>
       </ion-navbar>
-    </ion-header>
+    </ion-header> -->
     
-    <ion-content padding style="text-align:center;">
+    <ion-content padding>
 
-
+    <ion-item no-lines class="status">
+      <span id="highlight">Mood</span>
+      <span >--></span>
+      <span>Highlights</span>
+      <span>--></span>
+      <span>Done!</span>
+    </ion-item>
 
 
     <h1>How do you feel today?</h1>
+
 
 
 
@@ -34,7 +41,7 @@
             <img src="../../assets/icon/greysmile.svg" class="moodicon" *ngIf="load &&(mood.type !== '' && mood.type !== 'smile')">
           </button>
       
-      <ion-item>
+      <ion-item no-lines>
           <button ion-button (click)="goToHome()">Back</button>
           <button ion-button (click)="goToHighlightList()">Next</button>
       </ion-item>

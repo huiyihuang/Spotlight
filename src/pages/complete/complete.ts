@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { JournalPage } from '../journal/journal';
 
 /**
- * Generated class for the TabsPage page.
+ * Generated class for the CompletePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,20 +10,16 @@ import { JournalPage } from '../journal/journal';
 
 @IonicPage()
 @Component({
-  selector: 'page-tabs',
-  templateUrl: 'tabs.html',
+  selector: 'page-complete',
+  templateUrl: 'complete.html',
 })
-export class TabsPage {
-  tab1Root = JournalPage;
-  tab2Root = HomePage;
-  tab3Root = HomePage;
+export class CompletePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
+    console.log('ionViewDidLoad CompletePage');
   }
 
 }
-

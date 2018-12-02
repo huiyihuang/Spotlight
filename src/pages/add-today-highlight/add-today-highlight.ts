@@ -4,6 +4,7 @@ import { DataServiceProvider } from '../../providers/data-service/data-service';
 import { Diary, Mood } from '../../models/note';
 import { CreateHighlightPage } from '../create-highlight/create-highlight';
 import { MoodPage } from '../../pages/mood/mood';
+import { CompletePage } from '../../pages/complete/complete';
 
 @IonicPage()
 @Component({
@@ -60,6 +61,7 @@ export class AddTodayHighlightPage {
   } 
 
   private complete() {
+    this.navCtrl.push(CompletePage);
 
   }
 

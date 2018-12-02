@@ -25,14 +25,6 @@ export class HomePage {
       this.diaries = dataService.getEntries();
     }
 
-  private editDiary(diaryKey:string) {
-    this.navCtrl.push(CreateHighlightPage, {"diaryKey": diaryKey});
-  }
-
-  private deleteDiary(diaryKey:string) {
-    this.dataService.removeDiary(diaryKey);
-  }
-
   private goToHighlightList() {
     this.navCtrl.push(AddTodayHighlightPage);
   }
