@@ -16,6 +16,9 @@ import { CompletePage } from '../pages/complete/complete';
 
 import { JournalPage } from '../pages/journal/journal';
 import { Camera } from '@ionic-native/camera';
+import { TrendPage } from '../pages/trend/trend';
+import {ChartsModule} from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -27,11 +30,13 @@ import { Camera } from '@ionic-native/camera';
     MoodPage,
     TabsPage,
     JournalPage,
-    CompletePage
+    CompletePage,
+    TrendPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +48,8 @@ import { Camera } from '@ionic-native/camera';
     MoodPage,
     TabsPage,
     JournalPage,
-    CompletePage
+    CompletePage,
+    TrendPage
   ],
   providers: [
     StatusBar,
