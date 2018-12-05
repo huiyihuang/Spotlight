@@ -1,0 +1,24 @@
+<!-- Just using some fake data -->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Trend</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <p>What is your mood trend recently</p>
+  <div style='display:block;'>
+    <canvas baseChart
+    [data]='yaxis'
+    [labels]='xaxis'
+    [chartType]='doughnutChartType'
+    [legend]="lineChartLegend"
+    [options]="lineChartOptions">
+  
+    </canvas>
+  </div>
+
+</ion-content>

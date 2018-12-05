@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 import { Diary, Mood } from '../../models/note';
 import { Observer } from 'rxjs/Observer';
 import { Observable } from 'rxjs/Observable';
@@ -65,7 +65,6 @@ export class DataServiceProvider {
         };
         this.moods.push(eachMood);
       });
-
       this.notifySubscribers();
       console.log("this.loadData before flag:",this.loadData);
       this.loadData=true;
@@ -90,6 +89,8 @@ export class DataServiceProvider {
 
   public getMoods():Mood[] {
     let moodsClone = JSON.parse(JSON.stringify(this.moods));
+    // console.log(this.moods);
+    // console.log(this.diaries);
     return moodsClone;
   }
 
@@ -325,4 +326,5 @@ export class DataServiceProvider {
     });
     alert.present();
   }
+
 }
