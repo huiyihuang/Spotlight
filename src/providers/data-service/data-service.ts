@@ -81,17 +81,41 @@ export class DataServiceProvider {
     this.serviceObserver.next(undefined);
   }
 
+  //Get All Entries
   public getEntries():Diary[] {
     let entriesClone = JSON.parse(JSON.stringify(this.diaries));
     return entriesClone;
   }
 
-
+  // Get All Moods
   public getMoods():Mood[] {
     let moodsClone = JSON.parse(JSON.stringify(this.moods));
     // console.log(this.moods);
     // console.log(this.diaries);
     return moodsClone;
+  }
+
+  // Get All Image Links
+  public getImgs() {
+    let allLinks = [];
+    let imgLinks = [];
+    for (let e of this.diaries) {
+      if (e.hasimage === true) {
+        allLinks.push(e.image)
+      }
+    }
+    // Do the random selection only when the database has >10 imgs in total
+    if (allLinks.length > 10) {
+      allLinks = this.shuffle(allLinks);
+      for (let i=1; i <=10; i++) {
+        imgLinks.push(allLinks[i]);
+      }
+      return imgLinks;
+    } else {
+      allLinks = this.shuffle(allLinks);
+      return allLinks;
+    }
+    
   }
 
   public getDiaryByKey(key: string): Diary {
@@ -119,8 +143,7 @@ export class DataServiceProvider {
     return diaries;
   }
 
-// Keep this as get by "key" so that 
-// it can be used not only for getting today's mood but also for searching
+// Keep this as get by "key" so that it can be used not only for getting today's mood but also for searching
   public getMoodByKey(key: string): Mood {
     for (let e of this.moods) {
       if (e.key === key) {
@@ -344,26 +367,5 @@ export class DataServiceProvider {
   }
 
 
-  // Get All Image Links
-  public getImgs() {
-    let allLinks = [];
-    let imgLinks = [];
-    for (let e of this.diaries) {
-      if (e.hasimage === true) {
-        allLinks.push(e.image)
-      }
-    }
-
-    if (allLinks.length > 10) {
-      allLinks = this.shuffle(allLinks);
-      for (let i=1; i <=10; i++) {
-        imgLinks.push(allLinks[i]);
-      }
-      return imgLinks;
-    } else {
-      allLinks = this.shuffle(allLinks);
-      return allLinks;
-    }
-    
-  }
+  
 }
