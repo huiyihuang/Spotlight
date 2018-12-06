@@ -8,12 +8,12 @@ import { AlertController } from 'ionic-angular';
 
 // firebase key
 const firebaseConfig = {
-  apiKey: "AIzaSyCHMAxvrgWWo5qdVOfNx4uFjgj5FbRkEcI",
-  authDomain: "spotlight-ccba9.firebaseapp.com",
-  databaseURL: "https://spotlight-ccba9.firebaseio.com",
-  projectId: "spotlight-ccba9",
-  storageBucket: "spotlight-ccba9.appspot.com",
-  messagingSenderId: "851163986099"
+  apiKey: "AIzaSyDMcM7o7nQVWRRdWrYIZZIrMt-WsfGV-1U",
+  authDomain: "spotlight2-59f9f.firebaseapp.com",
+  databaseURL: "https://spotlight2-59f9f.firebaseio.com",
+  projectId: "spotlight2-59f9f",
+  storageBucket: "spotlight2-59f9f.appspot.com",
+  messagingSenderId: "487222076273"
   };
 
 @Injectable()
