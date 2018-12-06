@@ -37,7 +37,6 @@ export class TrendPage {
     private dataService: DataServiceProvider) {
       this.dataService.getObservable().subscribe(update => {
         this.moods = dataService.getMoods();
-        this.imgList = dataService.getImgs();
       });
       this.moods = dataService.getMoods();
       this.moods.forEach(element => {
@@ -50,6 +49,8 @@ export class TrendPage {
         };
         this.xaxis.push(element.key)
       });
+      this.imgList = dataService.getImgs();
+      console.log(this.imgList);
     }
 
   showmoods() {
