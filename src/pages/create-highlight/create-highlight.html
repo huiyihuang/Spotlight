@@ -1,37 +1,37 @@
-<ion-header>
+<!-- <ion-header>
     <ion-navbar>
       <ion-title>Edit Diary Entry</ion-title>
     </ion-navbar>
-  </ion-header>
-  <ion-content padding>
+  </ion-header> -->
+  <ion-content class="bck" padding>
     <!-- content: happy things today -->
     <ion-list no-lines>
-      <ion-item color="primary">
-        <ion-label>Diary Content:</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-textarea rows="6" placeholder="Today I ..." [(ngModel)]="diary.text"></ion-textarea>
-      </ion-item>
-      <ion-item></ion-item>
+<!--       <ion-item color="primary"> -->
+<!--         <ion-label>Diary Content:</ion-label> -->
+<!--       </ion-item> -->
+<!--       <ion-item> -->
+        <ion-textarea class="border" rows="6" placeholder="Today I ..." [(ngModel)]="diary.text"></ion-textarea>
+<!--       </ion-item> -->
+
 
     <!-- picture -->
-      <ion-item (click)="addPic()">
+<!--       <ion-item (click)="addPic()"> -->
         <img [src]="diary.image"/>
-      </ion-item>
-      <ion-item>
-        <button ion-button item-end icon-start (click)="addPic()">
+<!--       </ion-item> -->
+<!--       <ion-item> -->
+        <button ion-button class="float" icon-start (click)="addPic()">
           <ion-icon name="image"></ion-icon>
           Add Photo
         </button>
-      </ion-item>
+<!--       </ion-item> -->
     </ion-list>
   
   <!-- back,save -->
-    <ion-list>
-      <ion-item>
-        <button ion-button item-start (click)="goBack()">Cancel </button>
-        <button ion-button item-end (click)="saveDiary()">Save</button>
-      </ion-item>
+    <ion-list no-lines>
+  <!--     <ion-item> -->
+        <button ion-button  color="danger"class="nav-button back" (click)="goBack()">Cancel </button>
+        <button ion-button class="nav-button next" color="tab" (click)="saveDiary()">Save</button>
+<!--       </ion-item> -->
     </ion-list>
   </ion-content>
   
