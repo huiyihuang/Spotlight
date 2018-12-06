@@ -354,11 +354,16 @@ export class DataServiceProvider {
       }
     }
 
-    allLinks = this.shuffle(allLinks);
-    for (let i=1; i <=10; i++) {
-      imgLinks.push(allLinks[i]);
+    if (allLinks.length > 10) {
+      allLinks = this.shuffle(allLinks);
+      for (let i=1; i <=10; i++) {
+        imgLinks.push(allLinks[i]);
+      }
+      return imgLinks;
+    } else {
+      allLinks = this.shuffle(allLinks);
+      return allLinks;
     }
-
-    return imgLinks;
+    
   }
 }
