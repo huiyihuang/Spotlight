@@ -8,7 +8,7 @@
 
 
 <ion-content padding>
-  <p>Your Recent Mood Trend</p>
+  <h2>Your Recent Mood Trend</h2>
   <div style='display:block;'>
     <canvas baseChart
     [data]='yaxis'
@@ -18,6 +18,13 @@
     [options]="lineChartOptions">
   
     </canvas>
+  </div>
+
+  <h2>Selected Joyful Memories For You:</h2>
+  <div class="gallery">
+    <div class="one-img" *ngFor="let image of imgList">
+      <img [src]="image">
+    </div>
   </div>
 
 </ion-content>

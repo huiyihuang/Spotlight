@@ -30,12 +30,14 @@ export class TrendPage {
   public lineChartOptions:any = {
     responsive: true
   };
+  private imgList = [];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private dataService: DataServiceProvider) {
       this.dataService.getObservable().subscribe(update => {
         this.moods = dataService.getMoods();
+        this.imgList = dataService.getImgs();
       });
       this.moods = dataService.getMoods();
       this.moods.forEach(element => {
