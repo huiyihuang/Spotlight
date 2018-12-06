@@ -326,5 +326,39 @@ export class DataServiceProvider {
     });
     alert.present();
   }
+  
+  // Shuffle an Array
+  private shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
+    while (0 != currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+
+  // Get All Image Links
+  public getImgs() {
+    let allLinks = [];
+    let imgLinks = [];
+    for (let e of this.diaries) {
+      if (e.hasimage === true) {
+        allLinks.push(e.image)
+      }
+    }
+
+    allLinks = this.shuffle(allLinks);
+    for (let i=1; i <=10; i++) {
+      imgLinks.push(allLinks[i]);
+    }
+
+    return imgLinks;
+  }
 }
