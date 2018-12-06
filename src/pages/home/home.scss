@@ -1,7 +1,41 @@
 page-home {
 
-    // change size of the icon
+.bck{
+	background-color:#F7F7F7;
+}
+
     ion-icon {
-        font-size: 90px; //Preferred size here
+        font-size: 100px; 
     }
+
+.center{
+	text-align:center;
+}
+
+.button{
+    margin:0 auto;
+	height:150px;
+	width:70vw;
+	color:#fff;
+	border-radius:20px;
+	font-size:20px;
+}
+
+
+.today{
+background-color:#FFC80A;
+margin-top:70px;
+	
+}
+
+.quick{
+margin-top:100px;
+	background-color:#A0CECB;
+}
+
+.icon{
+	color:#fff;
+	display:block;
+}
+
 }
