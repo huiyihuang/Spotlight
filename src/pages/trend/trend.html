@@ -1,15 +1,16 @@
-<ion-header>
+<!-- <ion-header>
 
   <ion-navbar>
     <ion-title>Trend</ion-title>
   </ion-navbar>
 
 </ion-header>
+ -->
 
-
-<ion-content padding>
+<ion-content padding class="bck">
+  <div class="container data">
   <h2>Your Recent Mood Trend</h2>
-  <div style='display:block;'>
+  <div class="canvas" style='display:block;'>
     <canvas baseChart
     [data]='yaxis'
     [labels]='xaxis'
@@ -19,12 +20,14 @@
   
     </canvas>
   </div>
+  </div>
 
+  <div class="container imgs">
   <h2>Selected Joyful Memories For You:</h2>
   <div class="gallery">
     <div class="one-img" *ngFor="let image of imgList">
       <img [src]="image">
     </div>
   </div>
-
+  </div>
 </ion-content>

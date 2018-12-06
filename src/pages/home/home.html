@@ -1,21 +1,25 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Today
-    </ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
+
+<ion-content  class="bck center" padding>
   <!-- click to start quick log -->
-  <ion-item no-lines>
-    <button ion-button full (click)="presentActionSheet()">Quick Log Highlight Moments</button>
-  </ion-item>
+
+    <div class="button quick" (click)="presentActionSheet()">
+
+      <ion-icon class="icon" name="camera"></ion-icon>
+      Quick Log
+
+
+    </div>
+
   <!-- click to go to today page-->
-  <ion-item no-lines>
-    <button ion-button full (click)="goToMoodPage()">Add Today's Highlights</button>
-  </ion-item>
-  <br>
+
+    <div  class="button today" (click)="goToMoodPage()">
+    <ion-icon class="icon" name="create"></ion-icon>
+
+      Today's Highlights
+
+    </div>
+
 
   <!-- some icons may be useful to mood select options -->
   <!-- <button><ion-icon name="happy"></ion-icon></button>

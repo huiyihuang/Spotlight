@@ -1,9 +1,15 @@
 page-mood {
 
 
-ion-content{
+
+
+
+.bck{
+	background-color:#F7F7F7;
+	color: #94AEBF;
 	text-align:center;
 }
+
 .moodicon {
 	width:100px;
 	height:100px;
@@ -12,11 +18,11 @@ ion-content{
 .moodbutton {
 	width:100px;
 	height:100px;
+	margin-top:40px;
+	margin-bottom:50px;
 }
 
-span{
-	color:lightgrey;
-}
+
 
 #highlight{
 	font-weight:bold;
@@ -27,6 +33,41 @@ span{
 .status{
 	text-align:center;
 	font-size:14px;
+	margin-top:50px;
+	color:#B3B3B3;
+	margin-top:120px;
+}
+
+.status span{
+	color:lightgrey;
+}
+
+.nav-button{
+    border-radius:25px;
+    background-color: #FFDE6B;
+    color:#939393;
+    width:100px;
+    margin:15px;
+	
+}
+
+.back{
+    background-color: #FFDE6B;
+    margin-left:40px;
+        float:left;
+	
+}
+
+.next{
+    background-color: #FFC80A;
+    margin-right:40px;
+        float:right;
+	
+}
+
+h1{
+	margin:30px;
+	font-weight:400;
 }
 
 }
